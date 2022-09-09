@@ -42,7 +42,6 @@ chmod 775 extract_metadata.sh
 Running the script:
 ./extract_metadata.sh
 ``` 
-
 This script takes PDFs ETD as input and output a CSV file containing their Metadata. The intermediate steps are as below.
 
 (a) Obtain the cover page from the PDF and convert it to TIF format.
@@ -66,7 +65,7 @@ This script takes PDFs ETD as input and output a CSV file containing their Metad
     ```
     python3 crf-test_visual.py crf_model_visual.sav
     ```
-#### 7. Finally, we run one more script to process the output:
+##### 7. Finally, we run one more script to process the output:
 
 * To process text based CRF output:
     ```
