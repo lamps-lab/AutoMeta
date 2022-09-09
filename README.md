@@ -1,6 +1,6 @@
 #### AutoMeta
 
-AutoMeta is a metadata extractor tool for scanned Electronic Theses and Dissertations (ETDs). It has been built to extract seven metadata fields from the cover page of scanned ETDs. These fields are: Title, Author, Advisor, University, Degree, Program, Year. It utilize learning based model such as CRF model with text-based and visual-based features.
+AutoMeta is a metadata extractor tool for scanned Electronic Theses and Dissertations (ETDs). It has been built to extract seven metadata fields from the cover page of scanned ETDs. These fields are: Title, Author, Advisor, University, Degree, Program, and Year. It utilize learning based model such as CRF model with text-based and visual-based features.
 
 #### Steps
 
@@ -18,18 +18,15 @@ conda deactivate
 
 * If you no longer needed the virtual environment:
 conda remove -n autometa -all
-
 ``` 
 
 ##### 2. Clone this repository using https:
 ```
 git clone https://github.com/lamps-lab/AutoMeta.git
-
 ```
 ##### 3. Install requirements.txt:
 ```
 pip install -r requirements.txt
-
 ```
 ##### 4. Create a directory for the PDFs (ETDs):
 ```
@@ -72,18 +69,13 @@ This script takes PDFs ETD as input and output a CSV file containing their Metad
 #### 7. Finally, we run one more script to process the output:
 
 * To process text based CRF output:
-
     ```
     python3 process_crf.py
-    
     ```
 * To process visual based CRF output:
-
     ```
     python3 process_crf_visual.py
-    
     ```
-
 * The output will be a CSV file containing metadata for each ETD.
 
 File Location: CRF_output/metadata.csv or CRF_output/metadata_visual.csv
@@ -104,5 +96,4 @@ BibTeX:
   number={},
   pages={230-233},
   doi={10.1109/JCDL52503.2021.00066}}
-
 ```
