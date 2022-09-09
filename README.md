@@ -1,41 +1,49 @@
-#### File Structure
+#### AutoMeta
 
-AutoMeta
-```
- — CRF_output
- — etdrepo
- — hocr
- — tif
- — txt
- — xml	
- — code
-  — extract_metadata.sh
-  — anomaly_detect.py
-  — updateDB.py
-  — updateDB.config
-  — crf-test.py
-  — dummy_tags.py
-  — process_crf_result.py
-  — tesseract_ocr_hocr.py
-```
+AutoMeta is a metadata extractor tool for scanned Electronic Theses and Dissertations (ETDs). It has been built to extract seven metadata fields from the cover page of scanned ETDs. These fields are: Title, Author, Advisor, University, Degree, Program, Year. It utilize learning based model such as CRF model with text-based and visual-based features.
 
 #### Steps
 
+##### 1. Create a virtual environment:
+```
+We are creating a virtual environment named as "autometa".
 
-##### 1. Clone this repository and run file_structure.sh
+conda create -n autometa python=3.7 anaconda
+
+* To activate this environment, use:
+conda activate autometa
+
+* To deactivate an active environment, use:
+conda deactivate
+
+* If you no longer needed the virtual environment:
+conda remove -n autometa -all
+
+``` 
+
+##### 2. Clone this repository using https:
+```
+git clone https://github.com/lamps-lab/AutoMeta.git
 
 ```
-git clone git@github.com:lamps-lab/ETDMiner.git
-cd ETDMiner/metadata_correction/src/ 
-./file_structure.sh
+##### 3. Install requirements.txt:
 ```
+pip install -r requirements.txt
 
-* As of now, the ETDs are expected to be at ```ETDMiner/metadata_correction/src/etdrepo/``` 
-
-##### 2. Run this script to extract metadata using AutoMeta.
- 
 ```
-$./extract_metadata.sh 
+##### 4. Create a directory for the PDFs (ETDs):
+```
+mkdir -p etdrepo/scanned/PDF
+```
+* Once you create the directory, put all the PDFs inside the PDF directory.
+
+##### 5. Run the following script but you have to change the file permission:
+```
+Changing the file permission:
+chmod 775 extract_metadata.sh
+
+Running the script:
+./extract_metadata.sh
 ``` 
 
 This script takes PDFs ETD as input and output a CSV file containing their Metadata. The intermediate steps are as below.
@@ -47,46 +55,54 @@ This script takes PDFs ETD as input and output a CSV file containing their Metad
 
 (c) To make the extracted text files the same format as the input to the CRF model (XML format), adding dummy tags.
 
-(d) Using the CRF model to make predictions 
+(d) To use visual features, the script utilize text-align.py file and save the final result (i.e., visual_features_test.csv) to the output directory.
+
+##### 6. Run the CRF model to get the predicted metadata fields:
+
+* AutoMeta comes with two separate model:
+    * crf_model.sav and crf_model_visual.sav
+    * If we only want to use text based feature, the following command should be executed:
+    ```
+    python3 crf-test.py crf_model.sav
+    ```
+    * If we only want to use visual based feature, the following command should be executed:
+    ```
+    python3 crf-test_visual.py crf_model_visual.sav
+    ```
+#### 7. Finally, we run one more script to process the output:
+
+* To process text based CRF output:
+
+    ```
+    python3 process_crf.py
+    
+    ```
+* To process visual based CRF output:
+
+    ```
+    python3 process_crf_visual.py
+    
+    ```
 
 * The output will be a CSV file containing metadata for each ETD.
 
-File Location: CRF_output/metadata.csv
+File Location: CRF_output/metadata.csv or CRF_output/metadata_visual.csv
 
-##### 3. Use the extracted metadata to update the missing values in the original ETD database.
-
-* ```updateDB.config``` is the configutation file. This is where you enter your database login information and set database settings.
+If you are using our tool, please cite the following paper:
 
 ```
-[SERVER_CONFIG]
+Plain Text:
+M. Hasan Choudhury, H. R. Jayanetti, J. Wu, W. A. Ingram and E. A. Fox, "Automatic Metadata Extraction Incorporating Visual Features from Scanned Electronic Theses and Dissertations," 2021 ACM/IEEE Joint Conference on Digital Libraries (JCDL), 2021, pp. 230-233, doi: 10.1109/JCDL52503.2021.00066.
 
-HOST = hawking.cs.odu.edu
-USER = username_for_hawking
-PASSWORD = password_for_hawking
+BibTeX:
+@INPROCEEDINGS{9651772,
+  author={Hasan Choudhury, Muntabir and Jayanetti, Himarsha R. and Wu, Jian and Ingram, William A. and Fox, Edward A.},
+  booktitle={2021 ACM/IEEE Joint Conference on Digital Libraries (JCDL)}, 
+  title={Automatic Metadata Extraction Incorporating Visual Features from Scanned Electronic Theses and Dissertations}, 
+  year={2021},
+  volume={},
+  number={},
+  pages={230-233},
+  doi={10.1109/JCDL52503.2021.00066}}
 
-[DATABASE_CONFIG]
-DATABASE = pates_etds (Database name)
-ETD_TABLE = orig_etd_tablename
-ETD_TABLE_LIMIT = all (OR set this to any numerical value (< total no. of rows in orig etd table) which will decide how many rows in the database to be considered as input)
-SHADOW_TABLE = shadow_tablename
-
-[METADATA_UPDATE_CONFIG]
-	
-ORIG_METHOD = library
-UPDATE_METHOD = autometa
 ```
-
-* The ```updateDB.py``` code will conduct the following operations.
-
-1. This code iterates through each row in the original ETD table to look for missing values.
-2. If a missing value(s) is found, it would check the metadata miner autoMeta to obtain the missing values. 
-3. If missing values are available in the CSV file obtained as output from autoMeta, the original ETD table will be updated with these data while the original row is backed up in the new shadow table. 
-4. The orig ETD table will have a new version number incremented by 1.
-
- ```$ python3 updateDB.py ``` 
- 
-##### Future:
-
-* Incorporate visual features for predictions using CRF model.
-* Allow a user to provide a list of ETDs (path to ETDs) on which to run the entire process.
-* Determine which page of an ETD is the cover page intelligently.

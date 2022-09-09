@@ -2,10 +2,15 @@
 
 #title         	:extract_metadata.sh
 #description  	:This script takes PDFs ETD as input and output a CSV file containing their Metadata
-#author			:Himarsha R. Jayanetti 
-#date         	:Saturday, May 21, 2022
+#author			:Muntabir Choudhury 
+#date         	:Friday, September 09, 2022
 #===================================================================================================
 
+##==============
+# File Structure
+##==============
+echo "Creating output directories"
+mkdir {CRF_output,hocr,Text_align_output,tif,txt,xml}
 
 #==========
 #PDF to TIF
@@ -72,7 +77,7 @@ echo " "
 #==============
 #python code to add dummy tags into the extracted text
 #this will create the XML files for each text file in the xml folder
-echo "Generating the visual feature ..."
+echo "Processing Visual Features .."
 python3 text-align_test.py
 
 echo "Done."
@@ -85,12 +90,12 @@ echo " "
 
 #Using the saved CRF model to predict the metadata fields
 #Provide the path to the saved CRF model pickle file as the first argument
-echo "Predicting metadata using the CRF model ..."
-python3 crf-test.py crf_model.sav 
+#echo "Predicting metadata using the CRF model ..."
+#python3 crf-test.py crf_model.sav 
 #This will output an intermediate file at CRF_output/intermediate.csv
 
-echo "Done."
-echo " "
+#echo "Done."
+#echo " "
 
 #=============================
 #Combine Output & Generate CSV 

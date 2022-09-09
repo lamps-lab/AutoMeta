@@ -20,15 +20,12 @@ import glob
 from xml.etree import ElementTree as ET
 import numpy as np
 from sklearn.metrics import classification_report
-from nltk.tag import StanfordPOSTagger
-import stanza
 from sklearn_crfsuite import CRF
 from sklearn_crfsuite import metrics
 import pickle
 import pandas as pd
 
-#csvfile = open('etd_to_bio.csv', 'w')
-#csv_writer = csv.writer(csvfile)
+
 CRFmodel_filename = sys.argv[1]
 
 numbers = re.compile(r'(\d+)')

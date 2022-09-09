@@ -1,3 +1,8 @@
+"""
+Created on Thu Apr 16 13:20:47 2020
+@author: Muntabir Choudhury
+"""
+
 # USAGE
 # python tesseract.py --image images/paper-01.tif 
 # python tesseract.py --image images/paper-02.tif  --preprocess blur

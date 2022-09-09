@@ -22,8 +22,6 @@ import glob
 from xml.etree import ElementTree as ET
 import numpy as np
 from sklearn.metrics import classification_report
-from nltk.tag import StanfordPOSTagger
-#import stanza
 from sklearn_crfsuite import CRF
 from sklearn_crfsuite import metrics
 import pickle
