@@ -34,11 +34,15 @@ cd AutoMeta/src/
 mkdir -p etdrepo/scanned/PDF
 ```
 * Once you create the directory, put all the PDFs inside the PDF directory. Or you can grab the input examples that has been provided in the inputExample directory.
+```
+cd ..
+cp inputExample/pdf/*.pdf ./src/etdrepo/scanned/PDF/
+cd src/
+```
 
 ##### 5. Run the following script but you have to change the file permission:
 ```
 Changing the file permission:
-cd src/
 chmod 775 extract_metadata.sh
 
 Running the script:
@@ -79,7 +83,7 @@ This script takes PDFs ETD as input and output a CSV file containing their Metad
     ```
 * The output will be a CSV file containing metadata for each ETD.
 
-File Location: CRF_output/metadata.csv or CRF_output/metadata_visual.csv
+File Location: CRF_output/metadata.csv (text-based) or CRF_output/metadata_visual.csv (visual-based)
 
 If you are using our tool, please cite the following paper:
 
