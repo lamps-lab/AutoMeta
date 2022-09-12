@@ -26,7 +26,7 @@ git clone https://github.com/lamps-lab/AutoMeta.git
 ```
 ##### 3. Install requirements.txt:
 ```
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 ##### 4. Create a directory for the PDFs (ETDs):
 ```
