@@ -28,9 +28,9 @@ git clone https://github.com/lamps-lab/AutoMeta.git
 ```
 python -m pip install -r requirements.txt
 ```
-##### 4. Create a directory for the PDFs (ETDs):
+##### 4. Change the directory to src/  and Create a directory for the PDFs (ETDs):
 ```
-cd AutoMeta
+cd AutoMeta/src/
 mkdir -p etdrepo/scanned/PDF
 ```
 * Once you create the directory, put all the PDFs inside the PDF directory. Or you can grab the input examples that has been provided in the inputExample directory.
