@@ -113,7 +113,7 @@ echo " "
 
 #Provide the path to the saved CRF model pickle file as the first argument
 echo "Predicting metadata using the CRF visual-based model ..."
-python3 python3 crf-test_visual.py crf_model_visual.sav 
+python3 crf-test_visual.py crf_model_visual.sav 
 
 #This will output an intermediate file at CRF_output/intermediate_visual.csv
 echo "Done."
