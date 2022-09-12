@@ -70,11 +70,8 @@ rm *.txt
 echo "Changing directories to inputExample/clean_txt"
 cd ..
 cd ..
-cd inputExample/clean_txt/
-echo "Copying clean text to src/txt/"
-cp *.txt ../src/txt/
-cd ..
-cd ..
+echo "Copying clean text to src/txt"
+cp inputExample/clean_txt/*.txt ./src/txt/
 cd src/
 
 #==========
