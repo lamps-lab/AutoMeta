@@ -64,10 +64,20 @@ done
 echo "Done."
 echo " "
 
+echo "Replacing generated txt by OCR with clean txt"
+cd txt/
+rm *.txt
+echo "Changing directories to inputExample/clean_txt"
+cd ..
+cd inputExample/clean_txt/
+echo "Copying clean text to src/txt/"
+cp *.txt ../src/txt/
+cd ..
+cd src/
+
 #==========
 #TXT to XML
 #==========
-
 
 #python code to add dummy tags into the extracted text
 #this will create the XML files for each text file in the xml folder
