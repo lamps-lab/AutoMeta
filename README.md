@@ -30,6 +30,7 @@ python -m pip install -r requirements.txt
 ```
 ##### 4. Create a directory for the PDFs (ETDs):
 ```
+cd AutoMeta
 mkdir -p etdrepo/scanned/PDF
 ```
 * Once you create the directory, put all the PDFs inside the PDF directory. Or you can grab the input examples that has been provided in the inputExample directory.
