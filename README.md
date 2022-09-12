@@ -59,28 +59,8 @@ This script takes PDFs ETD as input and output a CSV file containing their Metad
 
 (d) To use visual features, the script utilize text-align.py file and save the final result (i.e., visual_features_test.csv) to the output directory.
 
-##### 6. Run the CRF model to get the predicted metadata fields:
+(e) AutoMeta comes with two separate model: crf_model.sav and crf_model_visual.sav
 
-* AutoMeta comes with two separate model:
-    * crf_model.sav and crf_model_visual.sav
-    * If we only want to use text based feature, the following command should be executed:
-    ```
-    python3 crf-test.py crf_model.sav
-    ```
-    * If we only want to use visual based feature, the following command should be executed:
-    ```
-    python3 crf-test_visual.py crf_model_visual.sav
-    ```
-##### 7. Finally, we run one more script to process the output:
-
-* To process text based CRF output:
-    ```
-    python3 process_crf.py
-    ```
-* To process visual based CRF output:
-    ```
-    python3 process_crf_visual.py
-    ```
 * The output will be a CSV file containing metadata for each ETD.
 
 File Location: CRF_output/metadata.csv (text-based) or CRF_output/metadata_visual.csv (visual-based)

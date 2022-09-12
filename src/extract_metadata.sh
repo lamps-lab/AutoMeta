@@ -103,20 +103,27 @@ echo " "
 #=========
 
 #Using the saved CRF model to predict the metadata fields
-#Provide the path to the saved CRF model pickle file as the first argument
-#echo "Predicting metadata using the CRF model ..."
-#python3 crf-test.py crf_model.sav 
-#This will output an intermediate file at CRF_output/intermediate.csv
+#Provide the path to the saved CRF text-based model pickle file as the first argument
+echo "Predicting metadata using the CRF text-based model ..."
+python3 crf-test.py crf_model.sav
 
-#echo "Done."
-#echo " "
+#This will output an intermediate file at CRF_output/intermediate.csv
+echo "Done."
+echo " "
+
+#Provide the path to the saved CRF model pickle file as the first argument
+echo "Predicting metadata using the CRF visual-based model ..."
+python3 python3 crf-test_visual.py crf_model_visual.sav 
+
+#This will output an intermediate file at CRF_output/intermediate_visual.csv
+echo "Done."
+echo " "
 
 #=============================
 #Combine Output & Generate CSV 
 #=============================
 
-#python3 process_crf_result.py
-
-#This will output the final CSV output file at CRF_output/metadata.csv containing the extracted metadata 
-
+echo "Processing the CRF output"
+python3 process_crf_result.py
+python3 process_crf_visual.py
 
