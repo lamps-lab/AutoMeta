@@ -8,7 +8,7 @@ AutoMeta is a metadata extractor tool for scanned Electronic Theses and Disserta
 ```
 We are creating a virtual environment named as "autometa".
 
-conda create -n autometa python=3.7 anaconda
+conda create -n autometa python=3.7.7 anaconda
 
 * To activate this environment, use:
 conda activate autometa
@@ -17,7 +17,7 @@ conda activate autometa
 conda deactivate
 
 * If you no longer needed the virtual environment:
-conda remove -n autometa -all
+conda env remove -n autometa
 ``` 
 
 ##### 2. Clone this repository using https:
@@ -32,11 +32,12 @@ pip install -r requirements.txt
 ```
 mkdir -p etdrepo/scanned/PDF
 ```
-* Once you create the directory, put all the PDFs inside the PDF directory.
+* Once you create the directory, put all the PDFs inside the PDF directory. Or you can grab the input examples that has been provided in the inputExample directory.
 
 ##### 5. Run the following script but you have to change the file permission:
 ```
 Changing the file permission:
+cd src/
 chmod 775 extract_metadata.sh
 
 Running the script:
