@@ -124,6 +124,6 @@ echo " "
 #=============================
 
 echo "Processing the CRF output"
-python3 process_crf_result.py
+python3 process_crf.py
 python3 process_crf_visual.py
 
