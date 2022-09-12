@@ -14,6 +14,8 @@ mkdir {CRF_output,hocr,Text_align_output,tif,txt,xml}
 cd ..
 cd model/
 cp crf_model_visual.sav crf_model.sav ../src/
+cd ..
+cd src/
 
 #==========
 #PDF to TIF
