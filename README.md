@@ -1,4 +1,4 @@
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/automatic-metadata-extraction-incorporating/key-information-extraction-on-etd500)](https://paperswithcode.com/sota/key-information-extraction-on-etd500?p=automatic-metadata-extraction-incorporating)
+
 #### AutoMeta
 
 AutoMeta is a metadata extractor tool for scanned Electronic Theses and Dissertations (ETDs). It has been built to extract seven metadata fields from the cover page of scanned ETDs. These fields are: Title, Author, Advisor, University, Degree, Program, and Year. It utilize learning based model such as CRF model with text-based and visual-based features.
